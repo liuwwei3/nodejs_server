@@ -1,0 +1,41 @@
+
+<nav class="nav navbar-default navbar-fixed-top">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <a class="navbar-brand outline">
+         <sapn class="glyphicon glyphicon-hand-right"></span>
+         <!-- img style="height:23px" src="<%= settings.logo %>" -->
+     </a>
+     <button type="button" class="navbar-toggle collapsed" aria-expanded="false" data-target="#good-bye" data-toggle="collapse">
+            <span class="sr-only">(this is for space!)</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+     </button>
+      </div>
+      <div class="navbar-collapse collapse"  id="good-bye">
+     <ul class="navbar-nav nav">
+        <% if(args['location'] == "home"){ %>
+        <li class="active"><a href="/">HOME</a></li>
+        <li><a href="/blogs">QUERY</a></li>
+        <% } else if (args['location'] == "blogs"){  %>
+        <li><a href="/">HOME</a></li>
+        <li class="active"><a href="/blogs">QUERY</a></li>
+        <% } %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+           <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+              <span class="glyphicon glyphicon-user"></span>
+              <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu">
+              <li> <a href="#" data-toggle="modal" data-target="#logindiag">登录</a></li>
+              <li> <a href="#" data-toggle="modal" data-target="#regdiag">注册</a></l
+           </ul>
+        </li>
+      </ul>
+      </div>
+   </div>
+</nav>
+<% include log_reg.ejs %>

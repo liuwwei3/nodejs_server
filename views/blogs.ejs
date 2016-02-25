@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <% include public_include.ejs %>
+    <title><%= args['location'] %></title>
+  </head>
+  <body style="padding-top:50px">
+  <% include header.ejs %>
+  <div class='row' style="padding-top: 30px">
+     <div class='col-xs-1'></div>
+     <div class='col-xs-10'>
+        <div class='row'>
+           <div class="col-xs-9">
+              <form class="form">
+                 <div class="input-group">
+                    <input type='text' class="form-control" name="rootquery" placeholder="query">
+                    <div class="input-group-addon">
+                       <button type="submit" class="glyphicon glyphicon-search"></button>
+                    </div>
+                 </div>
+              </form>
+           </div>
+           <div class="col-xs-3">
+                 <a target='_BLANK' href='http://hz01-wise-lighttpvideo03.hz01.baidu.com:8192/mongo/label?query=<%= data['rootquery'] %>' class='btn btn-default'>查看标注结果</a>
+           </div>
+       </div>
+
+        
+
+        <% if(data['flag'] == true) { %>
+        <div style="padding-top:20px" ></div>
+        <div class="panel panel-default">
+           <div class='panel-heading' id="__rootquery" value="<%= data['rootquery'] %>"  ><%= data['rootquery'] %></div>
+           <ul class='list-group' id="main">
+              <% for(var i = 0; i < data['related'].length ; i++) { %>
+                 <li class='list-group-item container-fluid'>
+                    <%= data['related'][i] %>
+                    <ul style="text-align:right">
+                       <label>强
+                       <input bb='rr' type="radio" name=" <%= data['related'][i] %> " value='strong'>
+                       </label>
+                       <label>弱
+                       <input type="radio" name=" <%= data['related'][i] %> " value='weak'>
+                       </label> 
+                       <label>不
+                       <input type="radio" name=" <%= data['related'][i] %> " value='not'>
+                       </label>
+                    </ul>
+                 </li>
+              <% } %>
+           </ul>
+        </div>
+
+        <button class="btn btn-default" onclick="submit_label()">提交标注</button>
+        
+        <% } %>
+        
+        
+               
+     </div>
+  </div>
+  </body>
+  <% include footer.ejs %>
+</html>
